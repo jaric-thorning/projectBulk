@@ -12,6 +12,7 @@ import java.util.Iterator;
 import java.util.Set;
 
 import model.Exercise;
+import model.ExerciseReader;
 import model.Log;
 import model.Workout;
 
@@ -32,8 +33,24 @@ public class CurrentWorkout extends AppCompatActivity {
 
         final Button button = (Button) findViewById(R.id.new_workout_submit_button);
 
-        Log logfile = new Log("test", "test");
-        final Workout new_workout = new Workout(logfile);
+        final Workout new_workout = new Workout();
+
+        ExerciseReader exerciseReader = new ExerciseReader();
+
+        Set<Exercise> exercise_list = null;
+
+        try {
+            exercise_list = exerciseReader.read(this, R.raw.exercise_definitions);
+        }
+        catch (Exception e) {
+            System.out.println("FAILED TO LOAD EXERCISES" + e);
+        }
+
+        if(exercise_list != null) {
+            for (Exercise e : exercise_list) {
+                System.out.println(e);
+            }
+        }
 
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

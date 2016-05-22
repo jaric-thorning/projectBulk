@@ -16,8 +16,7 @@ public class Workout {
     private Log logFile;
     private Set<Exercise> exercises;
 
-    public Workout(Log logFile){
-        this.logFile = logFile;
+    public Workout(){
         this.exercises = new HashSet<Exercise>();
 
     }
