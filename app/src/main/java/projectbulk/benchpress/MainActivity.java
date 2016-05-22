@@ -83,8 +83,13 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_start_workout) {
-            // Handle the camera action
+            Intent myIntent = new Intent(MainActivity.this, CurrentWorkout.class);
+            //myIntent.putExtra("key", value); //Optional parameters
+            MainActivity.this.startActivity(myIntent);
         } else if (id == R.id.nav_logs) {
+            Intent myIntent = new Intent(MainActivity.this, LogViewer.class);
+            //myIntent.putExtra("key", value); //Optional parameters
+            MainActivity.this.startActivity(myIntent);
 
         } else if (id == R.id.nav_progress) {
 
