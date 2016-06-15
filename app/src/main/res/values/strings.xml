@@ -65,4 +65,10 @@
 
     <string name="pref_title_vibrate">Vibrate</string>
     <string name="title_activity_log_viewer">logViewer</string>
+
+    <string-array name="exercise_name_array">
+        <item>Bench Press</item>
+    </string-array>
+
+
 </resources>

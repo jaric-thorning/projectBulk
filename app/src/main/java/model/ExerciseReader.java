@@ -21,7 +21,6 @@ public class ExerciseReader {
     }
 
     public Set<Exercise> read(Context ctx, int resId) throws FileNotFoundException, IOException {
-        System.out.println("GETTING EXERCISES");
 
         InputStream inputStream = ctx.getResources().openRawResource(resId);
         InputStreamReader inputreader = new InputStreamReader(inputStream);
@@ -41,7 +40,6 @@ public class ExerciseReader {
         } catch (IOException e) {
             throw e;
         }
-        System.out.println("GOT EXERCISES");
         return exercise_list;
     }
 }

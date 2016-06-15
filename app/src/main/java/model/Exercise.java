@@ -24,7 +24,6 @@ public class Exercise {
 
         this.weight = 0;
 
-
     }
 
     public void set_reps(int reps){
@@ -45,8 +44,6 @@ public class Exercise {
 
     @Override
     public String toString(){
-
-        return this.name + ": " + Integer.toString(this.sets) + " sets of " + Integer.toString(this.reps) + " reps at " +  Integer.toString(this.weight)
-                + "kg.";
+        return this.name;
     }
 }
