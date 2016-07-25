@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_start_workout) {
-            Intent myIntent = new Intent(MainActivity.this, CurrentWorkout.class);
+            Intent myIntent = new Intent(MainActivity.this, WorkoutSelectActivity.class);
             //myIntent.putExtra("key", value); //Optional parameters
             MainActivity.this.startActivity(myIntent);
         } else if (id == R.id.nav_logs) {
