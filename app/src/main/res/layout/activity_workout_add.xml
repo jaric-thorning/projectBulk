@@ -48,10 +48,58 @@
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/listView"
+        android:id="@android:id/list"
         android:layout_below="@+id/addExerciseBtn"
         android:layout_marginTop="24dp"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="false"
+        tools:listitem="@android:layout/simple_list_item_1" />
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentBottom="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            >
+
+            <Button
+                android:id="@+id/btn_back"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Back"
+                android:layout_alignParentLeft="true"
+                android:background="@android:color/holo_red_light"
+                android:textColor="@android:color/holo_red_dark"
+                android:layout_weight=".5"
+                android:clickable="true"
+                android:enabled="true" />
+
+            <Button
+                android:id="@+id/btn_done"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Done"
+                android:layout_alignParentRight="true"
+                android:background="@android:color/holo_green_light"
+                android:textColor="@android:color/holo_green_dark"
+                android:layout_weight=".5"
+                android:clickable="true"
+                android:enabled="true" />
+
+
+
+        </LinearLayout>
+
+
+
+
+    </RelativeLayout>
+
 
 
 </RelativeLayout>

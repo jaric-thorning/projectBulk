@@ -1,5 +1,6 @@
 package projectbulk.benchpress;
 
+import android.app.ListActivity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,11 +18,12 @@ import model.Exercise;
 import model.ExerciseReader;
 import model.Workout;
 
-public class WorkoutAddActivity extends AppCompatActivity {
+public class WorkoutAddActivity extends ListActivity {
 
     ArrayList<String> exerciseList = new ArrayList<String>();
 
-    ArrayAdapter<String> adapter;
+    ArrayAdapter<String> activity_adapter;
+    ArrayAdapter<String> spinner_adapter;
 
 
     @Override
@@ -33,6 +35,9 @@ public class WorkoutAddActivity extends AppCompatActivity {
         final Workout new_workout = new Workout();
         ExerciseReader exerciseReader = new ExerciseReader();
         Set<Exercise> exercise_list = null;
+
+        activity_adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, exerciseList);
+        setListAdapter(activity_adapter);
 
         try {
             exercise_list = exerciseReader.read(this, R.raw.exercise_definitions);
@@ -53,13 +58,13 @@ public class WorkoutAddActivity extends AppCompatActivity {
             }
             Collections.sort(list);
             // Create an ArrayAdapter using the string array and a default spinner layout
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+            spinner_adapter = new ArrayAdapter<String>(this,
                     android.R.layout.simple_spinner_item, list);
 
             // Specify the layout to use when the list of choices appears
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinner_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             // Apply the adapter to the spinner
-            spinner.setAdapter(adapter);
+            spinner.setAdapter(spinner_adapter);
         }
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -70,7 +75,9 @@ public class WorkoutAddActivity extends AppCompatActivity {
                     System.out.println(e);
                 }
                 exerciseList.add(spinner.getSelectedItem().toString());
-                adapter.notifyDataSetChanged();
+                System.out.println("Adding: " + spinner.getSelectedItem().toString());
+                activity_adapter.notifyDataSetChanged();
+
             }
         });
     }
