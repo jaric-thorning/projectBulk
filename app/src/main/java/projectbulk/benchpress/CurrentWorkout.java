@@ -29,7 +29,7 @@ public class CurrentWorkout extends AppCompatActivity {
         setupActionBar();
 
 
-        //final Spinner editText_ = (Spinner) findViewById(R.id.new_workout_exercise_name_spinner);
+        final Spinner editText_name = (Spinner) findViewById(R.id.new_workout_exercise_name_spinner);
         final EditText editText_reps = (EditText) findViewById(R.id.new_workout_exercise_reps_entry);
         final EditText editText_sets = (EditText) findViewById(R.id.new_workout_exercise_sets_entry);
         final EditText editText_weight = (EditText) findViewById(R.id.new_workout_exercise_weight_entry);
@@ -37,7 +37,7 @@ public class CurrentWorkout extends AppCompatActivity {
 
         final Button button = (Button) findViewById(R.id.new_workout_submit_button);
 
-        final Workout new_workout = new Workout();
+        final Workout new_workout = new Workout(editText_name.toString());
 
         ExerciseReader exerciseReader = new ExerciseReader();
 

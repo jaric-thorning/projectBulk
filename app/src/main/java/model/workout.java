@@ -1,6 +1,8 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -13,28 +15,38 @@ import java.util.Set;
  */
 public class Workout {
 
-    private Log logFile;
     private Set<Exercise> exercises;
 
-    public Workout(){
+    private String workoutName; //unique identifier
+
+    public Workout(String workoutName){
+        this.workoutName = workoutName;
         this.exercises = new HashSet<Exercise>();
 
     }
 
-    /**
-     *
-     * @return the logfile of the Workout
-     */
-    public Log getLogFile(){
-        return this.logFile;
-    }
-
-
     public void addExercise(Exercise exercise){
-        this.exercises.add(exercise);
+        if (!this.exercises.contains(exercise)){
+            this.exercises.add(exercise);
+        }
     }
 
     public Set<Exercise> getExercises(){
         return this.exercises;
+    }
+
+    public String String(){
+        String constructor = workoutName + ":";
+        List<Exercise> list = new ArrayList<Exercise>(this.exercises);
+        for(int i = 0; i <  this.exercises.size(); i++){
+            constructor = constructor + " " + list.get(i);
+        }
+        return constructor;
+    }
+    public void updateName(String name){
+        this.workoutName = name;
+    }
+    public String getName(){
+        return workoutName;
     }
 }

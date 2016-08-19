@@ -5,6 +5,7 @@ import android.content.Context;
 import java.io.*;
 import java.util.HashSet;
 import java.util.Set;
+import java.io.File;
 
 import projectbulk.benchpress.MainActivity;
 
@@ -32,7 +33,7 @@ public class ExerciseReader {
         try {
             while ((line = bufferedreader.readLine()) != null) {
                 String[] retval = line.split(",");
-                if(retval != null) {
+                if (retval != null) {
                     e1 = new Exercise(retval[0]);
                     this.exercise_list.add(e1);
                 }

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ import java.util.Set;
 import model.Exercise;
 import model.ExerciseReader;
 import model.Workout;
+import model.WorkoutReader;
 
 public class WorkoutAddActivity extends ListActivity {
 
@@ -32,7 +34,11 @@ public class WorkoutAddActivity extends ListActivity {
         setContentView(R.layout.activity_workout_add);
 
         final Button button = (Button) findViewById(R.id.addExerciseBtn);
-        final Workout new_workout = new Workout();
+        final Button btn_done = (Button) findViewById(R.id.btn_done);
+        final Button btn_back = (Button) findViewById(R.id.btn_back);
+        final Workout new_workout = new Workout("PlaceHolder");
+        final WorkoutReader workoutreader = new WorkoutReader();
+        final EditText editText_name = (EditText) findViewById(R.id.new_workout_name_entry);
         ExerciseReader exerciseReader = new ExerciseReader();
         Set<Exercise> exercise_list = null;
 
@@ -80,5 +86,30 @@ public class WorkoutAddActivity extends ListActivity {
 
             }
         });
+        btn_done.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                System.out.println("Done.");
+                new_workout.updateName(editText_name.getText().toString());
+                workoutreader.loadWorkouts(getApplicationContext());
+                workoutreader.add_workout(new_workout);
+                workoutreader.save_workouts(getApplicationContext());
+
+                WorkoutAddActivity.this.setResult(1);
+                WorkoutAddActivity.this.finish();
+            }
+
+        });
+
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                WorkoutAddActivity.this.finish();
+            }
+        });
+    }
+
+    @Override
+    public void onBackPressed() {
+        WorkoutAddActivity.this.setResult(RESULT_CANCELED);
+        WorkoutAddActivity.this.finish();
     }
 }
